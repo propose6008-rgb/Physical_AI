@@ -51,4 +51,4 @@ for step in range(200):
     time.sleep(0.01)
 
 env.close()
-print("\n===== 실습 종료 =====")python test_mujoco.py
+print("\n===== 실습 종료 =====")
