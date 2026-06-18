@@ -37,13 +37,13 @@ for step in range(200):
         # qpos의 7번째 원소부터가 실제 관절들의 회전 각도(Radian)입니다.
         joint_angles = qpos[7:]
         # 소수점 둘째 자리까지만 예쁘게 출력
-        readable_angles = [round(angle, 2) for angle in joint_angles]
+        readable_angles = [round(float(angle), 2) for angle in joint_angles]
         print(f"🦵 8개 관절 각도(rad): {readable_angles}")
         
         # 3. 로봇의 관절 회전 속도
         # qvel은 관절들이 얼마나 빠르게 움직이고 있는지(Radian/s)를 나타냅니다.
         joint_velocities = qvel[6:]
-        readable_vels = [round(vel, 2) for vel in joint_velocities]
+        readable_vels = [round(float(vel), 2) for vel in joint_velocities]
         print(f"⚡ 8개 관절 속도(rad/s): {readable_vels}")
 
     # 화면을 업데이트하고 잠깐 쉽니다.
@@ -51,4 +51,4 @@ for step in range(200):
     time.sleep(0.01)
 
 env.close()
-print("\n===== 실습 종료 =====")
+print("\n===== 실습 종료 =====")python test_mujoco.py
