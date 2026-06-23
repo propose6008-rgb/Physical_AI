@@ -21,7 +21,7 @@ To secure a stable update step, **TRPO (Trust Region Policy Optimization)** cons
 
 $$\mathbb{E} \left[ D_{KL}(\pi_{\theta_{old}}(\cdot|s) \parallel \pi_\theta(\cdot|s)) \right] \le \delta$$
 
-While theoretically robust, TRPO requires computing the inverse of the **Fisher Information Matrix (FIM)**, leading to extreme computational complexity ($O(N^2)$ or O(N^3)).
+While theoretically robust, TRPO requires computing the inverse of the **Fisher Information Matrix (FIM)**, leading to extreme computational complexity ($O(N^2)$ or $O(N^3)$).
 
 **PPO (Proximal Policy Optimization)** replaces this heavy constraint with a simple **First-order Clipping Mechanism**, achieving comparable stability with higher computational efficiency.
 
