@@ -21,7 +21,7 @@ To secure a stable update step, **TRPO (Trust Region Policy Optimization)** cons
 
 $$\mathbb{E} \left[ D_{KL}(\pi_{\theta_{old}}(\cdot|s) \parallel \pi_\theta(\cdot|s)) \right] \le \delta$$
 
-While theoretically robust, TRPO requires computing the inverse of the **Fisher Information Matrix (FIM)**, leading to extreme computational complexity ($O(N^2)$ or $O(N^3)$)
+While theoretically robust, TRPO requires computing the inverse of the **Fisher Information Matrix (FIM)**, leading to extreme computational complexity.
   * complexity : $O(N^2)$ or $O(N^3)$
 
 **PPO (Proximal Policy Optimization)** replaces this heavy constraint with a simple **First-order Clipping Mechanism**, achieving comparable stability with higher computational efficiency.
@@ -36,14 +36,17 @@ $$L^{CLIP}(\theta) = \hat{\mathbb{E}}_t \left[ \min\left( r_t(\theta)\hat{A}_t, 
 
 ### Key Components
 
-#### 1) Probability Ratio ($r_t(\theta)$)
+#### 1) Probability Ratio 
+$$r_t(\theta)$$
 Tracks how much the new policy deviates from the old policy:
 $$r_t(\theta) = \frac{\pi_\theta(a_t | s_t)}{\pi_{\theta_{old}}(a_t | s_t)}$$
 
-#### 2) Advantage Estimate ($\hat{A}_t$)
+#### 2) Advantage Estimate 
+$$\hat{A}_t$$
 Indicates whether the taken action performed better or worse than the baseline average.
 
-#### 3) Clipped Mechanism ($\text{clip}$)
+#### 3) Clipped Mechanism 
+$$\text{clip}$$
 Limits the ratio $r_t(\theta)$ within the interval $[1-\epsilon, 1+\epsilon]$ (typically $\epsilon = 0.2$).
 * **Positive Advantage ($\hat{A}_t > 0$):** The action yielded better performance. The policy increases the action probability, but the update is capped at $1+\epsilon$ to avoid sudden policy shifts.
 * **Negative Advantage ($\hat{A}_t < 0$):** The action yielded worse performance. The update decreases the probability, bounded below by $1-\epsilon$ to mitigate policy collapse.
