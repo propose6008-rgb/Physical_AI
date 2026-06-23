@@ -8,7 +8,8 @@ print("===== 카메라 추적 기능이 탑재된 검증 시작 =====")
 env = gym.make("HalfCheetah-v4", render_mode="human")
 
 # 2. 모델 로드
-model = PPO.load("ppo_halfcheetah_model")
+#model = PPO.load("ppo_halfcheetah_model")
+model = PPO.load("ppo_halfcheetah_custom_model")
 
 obs, info = env.reset()
 
